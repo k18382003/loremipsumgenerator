@@ -33,7 +33,10 @@ function App() {
         <div className='content'>
           {paragraphs.map((p, i) => {
             return (
-              <p key={i}>{p}</p>
+              <>
+                <p key={i}>{p}</p>
+                <br />
+              </>
             )
           })}
         </div>

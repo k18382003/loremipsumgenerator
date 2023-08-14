@@ -4,6 +4,14 @@ Global variable
 ===============
 */
 
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   /* colors */
   --primary-100: #fae8ff;
@@ -35,6 +43,9 @@ Global variable
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
   --green: #138e55;
+  --blue: #0000ff;
+  --drak-blue:#000066;
+  --light-blue:#668cff;
   /* dark shades of primary color*/
   --clr-primary-1: hsl(184, 91%, 17%);
   --clr-primary-2: hsl(185, 84%, 25%);
@@ -94,6 +105,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color:var(--grey-100);
   caret-color: transparent;
+  line-height: 1;
 }
 
 code {
@@ -141,6 +153,7 @@ button:active {
 }
 
 .content {
+  margin-top: 20px;
   padding: 10px 30%;
   font-family: 'Consolas';
 }
@@ -163,7 +176,7 @@ Footer
   flex-wrap: wrap;
 }
 .footer-link {
-  color: var(--primary-900);
+  color: var(--drak-blue);
   text-transform: capitalize;
   font-size: 1rem;
   margin-right: 1rem;
@@ -171,13 +184,22 @@ Footer
   transition: var(--transition);
 }
 .footer-link:hover {
-  color: var(--primary-500);
+  color: var(--light-blue);
 }
 .footer-icon {
   font-size: 2rem;
   margin-right: 1rem;
-  color: var(--primary-900);
+  color: var(--drak-blue);
   transition: var(--transition);
+}
+
+.footer-icon:hover {
+  color: var(--light-blue);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 @media only screen and (max-width: 600px) {
