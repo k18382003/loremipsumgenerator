@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Birtday List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Learning Goal
 
-## Available Scripts
+Using <form> to understand onSumbit, event.preventDefault works
 
-In the project directory, you can run:
+## Steps
 
-### `npm start`
+#### Create title and form
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In App.jsx, create a <h2> tag for the component's title and setting up a form by using <form>, <label>, and <input> tags.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Setup State Variable
 
-### `npm test`
+```jsx
+const [paragraphs, setParagraphs] = useState(['']);
+const [amount, setAmount] = useState('');
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then, set up the paragraphs and amount as state variables using the useState hook.
+The default values for both variables will be empty strings, the values should be update while the clicking or typing event occurs.
 
-### `npm run build`
+The server is used to be stateless, however, if we use useState hook which allows us
+to memorize and update the state of a variable. Also, it triggers re-render eveytime we update the state.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Input onChange event
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```jsx
+<input
+  type="number"
+  name="amount"
+  min={1}
+  max={10}
+  value={amount}
+  onChange={(e) => setAmount(e.target.value)}
+/>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We can update our input value by setting value property to amount state variable, and setting up onChange function to set the value as above.
 
-### `npm run eject`
+#### Create a submit button and handleSubmit function
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```jsx
+const handleSubmit = (e: any | null) => {
+  e.preventDefault();
+  if (amount !== '') {
+    setParagraphs(data.slice(0, Number(amount)));
+  }
+};
+<form className="form" onSubmit={handleSubmit}>
+  // some codes here
+  <button type="submit">Generate</button>
+</form>;
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Then, we create a submit button and set the onSubmit attribute to a handleSubmit function.
+Because the submit will trigger re-render which it's not necessary in our case, we can use **e.preventDefault** to avoid it.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Import data array and slice the array depends on user's need
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```jsx
+import { data } from './data';
+setParagraphs(data.slice(0, Number(amount)));
+```
 
-## Learn More
+#### Iterate and Render and diplay by nested components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Display the number of items in the list by using the length property of the state variable. To render the list of paragraphs, iterate over the data array using the map method. And finally, we can display the paragraphs on the page.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Learning source
+
+https://www.udemy.com/course/react-tutorial-and-projects-course/?kw=React+18+tu&src=sac#

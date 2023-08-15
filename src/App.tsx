@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { EventHandler, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { data } from './data'
@@ -6,11 +6,12 @@ import Footer from './footer';
 
 function App() {
   const [paragraphs, setParagraphs] = useState(['']);
-  const [number, setNumber] = useState('');
+  const [amount, setAmount] = useState('');
 
-  const handleClick = () => {
-    if (number !== '') {
-      setParagraphs(data.slice(0, Number(number)))
+  const handleSubmit = (e: any | null) => {
+    e.preventDefault();
+    if (amount !== '') {
+      setParagraphs(data.slice(0, Number(amount)))
     }
   }
 
@@ -18,18 +19,17 @@ function App() {
     <>
       <div className="App">
         <h2 className='title'>No boring lorem ipsum but princesses</h2>
-        <div className='form'>
-          <span>Paragraphs: </span>
+        <form className='form' onSubmit={handleSubmit}>
+          <label htmlFor='amount'>Paragraphs: </label>
           <input type='number'
+            name='amount'
             min={1}
             max={10}
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-            onKeyDown={(event) => {
-              event.preventDefault();
-            }} />
-          <button type='button' onClick={handleClick}>Generate</button>
-        </div>
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <button type='submit'>Generate</button>
+        </form>
         <div className='content'>
           {paragraphs.map((p, i) => {
             return (
