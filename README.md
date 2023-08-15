@@ -1,8 +1,8 @@
-# Birtday List
+# Lorem ipsum generator
 
 ### Learning Goal
 
-Using <form> to understand onSumbit, event.preventDefault works
+Using ```<form>``` to understand onSumbit, event.preventDefault works
 
 ## Steps
 
