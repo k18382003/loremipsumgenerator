@@ -8,7 +8,7 @@ Using ``` <form> ``` to understand onSumbit, event.preventDefault works
 
 #### Create title and form
 
-In App.jsx, create a <h2> tag for the component's title and setting up a form by using <form>, <label>, and <input> tags.
+In App.jsx, create a <h2> tag for the component's title and setting up a form by using ``` <form> ```, ``` <label> ```, and ```<input> ``` tags.
 
 #### Setup State Variable
 
